@@ -1,31 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ideal Online Classes by Adarsh Mishra</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ideal Classes Portal - Adarsh Mishra</title>
+<style>
+body{margin:0;font-family:Poppins,Arial;background:#0a1931;color:#fff}
+.header{background:linear-gradient(90deg,#d4af37,#f9e27d);color:#0a1931;padding:20px;text-align:center;font-weight:700;font-size:22px}
+.nav{display:flex;overflow:auto;background:#132f5c;padding:10px;gap:10px;position:sticky;top:0;z-index:10}
+.nav a{background:#0a1931;color:#ffd700;padding:8px 15px;border-radius:20px;text-decoration:none;font-size:13px;white-space:nowrap;border:1px solid #d4af37}
+.box{background:#132f5c;margin:12px;padding:18px;border-radius:15px;border:1px solid #1e4a7a}
+.box h3{color:#ffd700;margin:0 0 10px}
+.btn{display:inline-block;background:#25D366;color:#fff;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:600;margin:5px;font-size:14px}
+.btn2{background:#ffd700;color:#0a1931}
+input{width:90%;padding:12px;border-radius:25px;border:none;margin:10px 0;text-align:center}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:#0a1931;padding:12px;border-radius:12px;text-align:center;border:1px solid #2a4a7a}
+</style>
 </head>
-<body style="margin:0;font-family:sans-serif;background:#0a1931;color:white;text-align:center">
+<body>
+<div class="header">Ideal Online Classes<br>by Adarsh Mishra<br><span style="font-size:13px">Daily 8 PM | Portal</span></div>
 
-<div style="background:linear-gradient(90deg,#d4af37,#f9e27d);color:#0a1931;padding:18px;font-weight:bold;font-size:22px">
-Ideal Online Classes by Adarsh Mishra<br>
-<span style="font-size:14px">Daily from 8 PM onwards</span>
+<div class="nav">
+<a href="#notices">📢 Notices</a>
+<a href="#notes">📚 Notes</a>
+<a href="#attendance">📝 Attendance</a>
+<a href="#fees">💰 Fees</a>
+<a href="#contact">📞 Contact</a>
 </div>
 
-<div style="background:#132f5c;margin:15px;padding:20px;border-radius:15px">
-<h3 style="color:#d4af37">With Your Love & Trust in Offline Teaching</h3>
-<p>Now Bringing Quality Education Online — Concept Based Learning from Basics to Advance at Affordable Fees.<br><br>Register fast for limited seats & Start your study from your own home</p>
+<div id="notices" class="box">
+<h3>📢 Latest Notice - <span style="font-size:12px;color:#fff">Aap yaha se edit kar sakte ho</span></h3>
+<p id="noticeText">✅ Kal raat 8 PM ko Maths ka test hai (Class 10th).<br>✅ Fees ki last date 25 Oct hai.<br>✅ Diwali vacation 20-25 Oct band rahega.</p>
 </div>
 
-<div style="background:#132f5c;margin:15px;padding:20px;border-radius:15px">
-<h3 style="color:#d4af37">Classes Offered</h3>
-<p>✅ Classes 5th - 10th (All Subjects)</p>
-<p>✅ Classes 11th - 12th (Maths, Physics, Chemistry, English & History)</p>
-<p style="color:#d4af37;font-weight:bold">Make Night Study Time Productive</p>
+<div id="notes" class="box">
+<h3>📚 Notes & Study Material</h3>
+<div class="grid">
+<div class="card"><b>Class 5-10</b><br><a class="btn" href="YOUR_DRIVE_LINK_5_10">Open Notes</a></div>
+<div class="card"><b>Class 11-12</b><br><a class="btn" href="YOUR_DRIVE_LINK_11_12">Open Notes</a></div>
+</div>
+<p style="font-size:12px;margin-top:10px;opacity:0.7">Teacher: Notes ka Google Drive link upar "YOUR_DRIVE_LINK" ki jagah paste karein.</p>
 </div>
 
-<a href="https://wa.me/917388262932" style="display:block;background:#25D366;color:white;padding:15px;margin:15px;border-radius:30px;text-decoration:none;font-weight:bold;font-size:18px">📱 WhatsApp: 7388262932</a>
+<div id="attendance" class="box">
+<h3>📝 Check Your Attendance</h3>
+<input type="text" id="rollInput" placeholder="Apna Roll No / Name likho">
+<button class="btn2 btn" onclick="checkRecord()">Check Now</button>
+<p id="result" style="margin-top:10px;color:#ffd700;font-weight:bold"></p>
+<p style="font-size:11px;opacity:0.6">Data Google Sheet se aayega. Abhi demo data hai.</p>
+</div>
 
-<p style="font-size:11px;opacity:0.6;padding:20px">© 2026 Ideal Online Classes by Adarsh Mishra</p>
+<div id="fees" class="box">
+<h3>💰 Fees Status</h3>
+<p>Fees paid hai ya due hai, website pe hi dikhega. Google Sheet update karte hi auto update ho jayega.</p>
+<a class="btn2 btn" href="YOUR_GOOGLE_SHEET_LINK">📊 Full Fee List (Teacher Only)</a>
+</div>
 
+<div id="contact" class="box" style="text-align:center">
+<h3>📞 Contact Sir</h3>
+<h2 style="color:#ffd700">7388262932</h2>
+<a class="btn" href="https://wa.me/917388262932">WhatsApp Message</a>
+<a class="btn2 btn" href="https://meet.google.com/">Join Live Class 8 PM</a>
+</div>
+
+<script>
+// DEMO DATA - Baad me Google Sheet se connect kar denge
+const students = {
+"1": "Aman - 85% Present - Fees Paid",
+"2": "Riya - 92% Present - Fees Due",
+"adarsh": "Demo - 100% Present"
+};
+function checkRecord(){
+let r = document.getElementById("rollInput").value.toLowerCase();
+let res = students[r] || "Record nahi mila. Sir se sampark karein 7388262932";
+document.getElementById("result").innerText = res;
+}
+</script>
 </body>
 </html>
