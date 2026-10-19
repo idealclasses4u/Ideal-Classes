@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="hi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ideal Classes by Adarsh Mishra</title>
 <style>
 body{margin:0;font-family:Arial;background:#081a33;color:#fff;text-align:center;padding-bottom:90px}
@@ -11,37 +8,12 @@ body{margin:0;font-family:Arial;background:#081a33;color:#fff;text-align:center;
 .badge{background:#081a33;color:#ffd700;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:bold;display:inline-block;margin-top:8px}
 .box{background:#132f5c;margin:14px;padding:18px;border-radius:16px;border:1px solid #1f4a80;text-align:left}
 .box h3{color:#ffd700;text-align:center;margin:0 0 12px}
-.main-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
-.main-tabs button{flex:1;padding:12px;border-radius:25px;border:none;font-weight:bold;background:#1f4a80;color:#fff;cursor:pointer}
-.main-tabs button.active{background:#ffd700;color:#081a33}
-.sub-tabs{display:flex;gap:8px;margin:10px 0}
-.sub-tabs button{flex:1;padding:9px;border-radius:20px;border:1px solid #ffd700;background:transparent;color:#ffd700;cursor:pointer;font-size:13px}
-.sub-tabs button.active{background:#ffd700;color:#081a33}
-.file-list a{display:block;background:#0e2447;padding:12px;border-radius:12px;margin:7px 0;text-decoration:none;color:#fff;border-left:4px solid #ffd700;font-size:14px}
-.btn{display:block;background:#ffd700;color:#081a33;padding:12px;border-radius:30px;text-decoration:none;font-weight:bold;text-align:center;margin:8px 0}
-.wa-float{position:fixed;bottom:22px;right:22px;background:#25D366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;text-decoration:none;z-index:999999}
-.small{font-size:11px;opacity:0.6;text-align:center}
-</style>
-</head>
-<body>
-<div class="header">
-<img src="IMG-20261008-WA0001.jpg">
-<h1>Ideal Classes by Adarsh Mishra</h1>
-<div class="badge">Both Offline & Online Class From 03:00 PM to 10:00 PM</div>
-<p style="margin:8px 0 0;font-size:13px">Daily Live - 8 PM | CBSE 5th to 12th</p>
-</div>
-
-<div class="box">
-<h3>📚 Study Material</h3>
-<div class="main-tabs">
-<button id="m9" class="active" onclick="setClass('9th')">Class 9th</button>
-<button id="m10" onclick="setClass('10th')">Class 10th</button>
-</div>
-
-<div id="box9">
-<div class="sub-tabs">
-<button id="b9n" class="active" onclick="setType('9th','Notes')">Notes</button>
-<button id="b9p" onclick="setType('9th','PYQs')">PYQs</button>
-</div>
-<div id="list9" class="file-list">Loading...</div>
-</div>
+.mtabs{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
+.mtabs button{flex:1;padding:12px;border-radius:25px;border:none;font-weight:bold;background:#1f4a80;color:#fff}
+.mtabs button.active{background:#ffd700;color:#081a33}
+.stabs{display:flex;gap:6px;margin:8px 0}
+.stabs button{flex:1;padding:8px;border-radius:15px;border:1px solid #ffd700;background:transparent;color:#ffd700;font-size:12px}
+.stabs button.active{background:#ffd700;color:#081a33}
+.file-list a{display:block;background:#0e2447;padding:11px;border-radius:10px;margin:6px 0;text-decoration:none;color:#fff;border-left:4px solid #ffd700;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+th,td{border
