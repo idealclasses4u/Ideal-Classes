@@ -2,18 +2,52 @@
 <html lang="hi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ideal Classes by Adarsh Mishra</title>
 <style>
-body{margin:0;font-family:Arial;background:#081a33;color:#fff;text-align:center;padding-bottom:90px}
+body{margin:0;font-family:Arial;background:#081a33;color:#fff;text-align:center}
 .header{background:linear-gradient(135deg,#d4af37,#fff1a8);color:#081a33;padding:28px 15px}
-.header img{width:135px;height:135px;border-radius:50%;border:4px solid #081a33;object-fit:cover;object-position:top;background:#fff}
+.header img{width:130px;height:130px;border-radius:50%;border:4px solid #081a33;background:#fff;object-fit:cover}
 .badge{background:#081a33;color:#ffd700;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:bold;display:inline-block;margin-top:8px}
 .box{background:#132f5c;margin:14px;padding:18px;border-radius:16px;border:1px solid #1f4a80;text-align:left}
-.box h3{color:#ffd700;text-align:center;margin:0 0 12px}
-.mtabs{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
-.mtabs button{flex:1;padding:12px;border-radius:25px;border:none;font-weight:bold;background:#1f4a80;color:#fff}
-.mtabs button.active{background:#ffd700;color:#081a33}
+.box h3{color:#ffd700;text-align:center}
+.mtabs{display:flex;gap:8px;margin:10px 0}
+.mtabs button{flex:1;padding:12px;border-radius:25px;border:none;font-weight:bold}
+.mtabs button.active{background:#ffd700}
+.file-list a{display:block;background:#0e2447;padding:12px;border-radius:10px;margin:6px 0;color:#fff;text-decoration:none;border-left:4px solid #ffd700}
 .stabs{display:flex;gap:6px;margin:8px 0}
-.stabs button{flex:1;padding:8px;border-radius:15px;border:1px solid #ffd700;background:transparent;color:#ffd700;font-size:12px}
+.stabs button{flex:1;padding:8px;border-radius:15px;border:1px solid #ffd700;background:transparent;color:#ffd700}
 .stabs button.active{background:#ffd700;color:#081a33}
-.file-list a{display:block;background:#0e2447;padding:11px;border-radius:10px;margin:6px 0;text-decoration:none;color:#fff;border-left:4px solid #ffd700;font-size:14px}
-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
-th,td{border
+.btn{display:block;background:#25D366;color:#fff;padding:12px;border-radius:30px;text-align:center;text-decoration:none;font-weight:bold;margin-top:10px}
+</style></head><body>
+<div class="header">
+<img src="IMG-20261008-WA0001.jpg" onerror="this.src='https://via.placeholder.com/130'">
+<h1>Ideal Classes by Adarsh Mishra</h1>
+<div class="badge">Offline & Online Class 3PM to 10PM</div>
+</div>
+<div class="box">
+<h3>📚 Study Material</h3>
+<div class="mtabs">
+<button id="m9" class="active" onclick="setClass('9th')">Class 9th</button>
+<button id="m10" onclick="setClass('10th')">Class 10th</button>
+</div>
+<div id="box9">
+<div class="stabs"><button id="b9n" class="active" onclick="setType('9th','Notes')">Notes</button><button id="b9p" onclick="setType('9th','PYQs')">PYQs</button></div>
+<div id="list9" class="file-list">Loading...</div>
+</div>
+<div id="box10" style="display:none">
+<div class="stabs"><button id="b10m" class="active" onclick="setSub10('Maths')">Maths</button><button id="b10s" onclick="setSub10('Science')">Science</button></div>
+<div class="stabs"><button id="b10mn" class="active" onclick="setType('10th','Notes')">Notes</button><button id="b10mp" onclick="setType('10th','PYQs')">PYQs</button></div>
+<div id="list10" class="file-list">Loading...</div>
+</div>
+</div>
+<div class="box" style="text-align:center">
+<h3>📞 Contact - 7388262932</h3>
+<a class="btn" href="https://wa.me/917388262932">WhatsApp Karo</a>
+</div>
+<script>
+let curClass='9th',curType9='Notes',curType10='Notes',curSub10='Maths';
+function setClass(c){curClass=c;document.getElementById('m9').classList.toggle('active',c=='9th');document.getElementById('m10').classList.toggle('active',c=='10th');document.getElementById('box9').style.display=c=='9th'?'block':'none';document.getElementById('box10').style.display=c=='10th'?'block':'none';loadFiles();}
+function setType(cls,type){if(cls=='9th'){curType9=type;document.getElementById('b9n').classList.toggle('active',type=='Notes');document.getElementById('b9p').classList.toggle('active',type=='PYQs');}else{curType10=type;document.getElementById('b10mn').classList.toggle('active',type=='Notes');document.getElementById('b10mp').classList.toggle('active',type=='PYQs');}loadFiles();}
+function setSub10(s){curSub10=s;document.getElementById('b10m').classList.toggle('active',s=='Maths');document.getElementById('b10s').classList.toggle('active',s=='Science');loadFiles();}
+function getFolder(){if(curClass=='9th')return curType9=='Notes'?'Class 9th':"Class 9th PYQ's";if(curSub10=='Maths')return curType10=='Notes'?'10th Maths Notes':"PYQ's Maths 10th";return curType10=='Notes'?'10th Science Notes':'10th Science PYQs';}
+async function loadFiles(){let folder=getFolder();let id=curClass=='9th'?'list9':'list10';let div=document.getElementById(id);div.innerHTML='⏳ '+folder+' loading...';try{let api=`https://api.github.com/repos/idealclasses4u/Ideal-Classes/contents/${encodeURIComponent(folder)}`;let r=await fetch(api);if(!r.ok){div.innerHTML=`📁 ${folder} me file upload karo`;return;}let files=await r.json();let h='';files.forEach(f=>{if(f.name=='.gitkeep')return;h+=`<a href="${f.download_url}" target="_blank">📄 ${f.name}</a>`});div.innerHTML=h||'Empty folder';}catch(e){div.innerHTML='Error - '+folder;}}
+loadFiles();
+</script></body></html>
